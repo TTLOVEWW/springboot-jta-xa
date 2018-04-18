@@ -1,0 +1,43 @@
+spring:
+  profiles:
+    active: dev
+  freemarker:
+    allow-request-override: false
+    cache: false
+    settings:
+      template_update_delay: 0
+      auto_import: common/common.ftl as com
+      datetime_format: yyyy-MM-dd
+      classic_compatible: true
+    check-template-location: true
+    charset: UTF-8
+    content-type: text/html
+    expose-request-attributes: false
+    expose-session-attributes: false
+    expose-spring-macro-helpers: false
+    prefix: 
+    request-context-attribute: request
+    suffix: .ftl
+    template-loader-path: classpath:/templates/ 
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+  mvc:
+    static-path-pattern: /static/**   
+#mybatis配置
+mybatis:
+  type-aliases-package: com.zjt.entity
+  mapper-locations: classpath:mapper/*.xml
+mapper:
+  mappers: com.zjt.util.MyMapper
+  not-empty: false
+  identity: MYSQL
+#pagehelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count,countSql
+#server
+server:
+  port: 8080
+  context-path: /jta
+  timeout: 10000
